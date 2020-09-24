@@ -1,41 +1,45 @@
-import React, {Component} from 'react';
-import {FlatList, ScrollView, View} from 'react-native';
-import Style from '../style/sytle';
-import Pokemon from '../components/pokemon';
-import axios from 'axios';
-
-/*   const getPokemons = async () => {
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=9')
-    .then(response =>response.json())
-    .then(console.log)
-  }; */
+import React, {Component} from 'react'
+import {FlatList, TextInput, TouchableOpacity, View} from 'react-native'
+import Style from '../style/sytle'
+import Pokemon from '../components/pokemon'
+import axios from 'axios'
 
 export default class pokedex extends Component {
   state = {
     pokemons: '',
-  };
+  }
 
   query = async () =>
     await axios
-      .get('https://pokeapi.co/api/v2/pokemon?limit=9')
-      .then((response) => {
-        this.setState({pokemons: response.data.results});
-      });
-
+      .get('https://pokeapi.co/api/v2/pokemon?limit=251')
+      .then(response => {
+        this.setState({pokemons: response.data.results})
+      })
   componentDidMount = () => {
-    this.query();
-  };
+    this.query()
+  }
 
-  render() {
+
+  render () {
     return (
+      
       <View style={Style.pokedexPokemonContainer}>
+        <TextInput placeholder={'Search'} style={Style.TextSearchInput} />
         <FlatList
-          style={Style.FlatList}
+          numColumns={3}
           data={this.state.pokemons}
-          renderItem={(item) =>   <ScrollView><Pokemon name={item.item.name} number={1} /></ScrollView>}
-          keyExtractor={(item) => item.url}
+          renderItem={item => (
+            <TouchableOpacity onPress={()=>this.props.navigation.navigate('DetailPokemon')} style={Style.row3x4}>
+               <Pokemon
+              style={Style.FlatList}
+              name={item.item.name}
+              number={parseInt(String(item.item.url).split('/')[6])}
+            />
+            </TouchableOpacity>
+          )}
+          keyExtractor={item => item.url}
         />
       </View>
-    );
+    )
   }
 }

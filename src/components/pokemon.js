@@ -1,7 +1,6 @@
 import React from 'react'
 import {Image, Text, TouchableHighlight, View} from 'react-native'
 import images from './images'
-import Style from '../style/sytle'
 import pokemon from './pokedex.json'
 export default props => {
   const state = {

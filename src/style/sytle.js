@@ -1,6 +1,28 @@
 import {StyleSheet, Dimensions} from 'react-native'
 
 export default StyleSheet.create({
+    Text : {
+        fontSize : 16,
+        textAlign : "center",
+        textTransform : "capitalize"
+    },
+    pokemonData : {
+        flex : 1,
+    },
+    pokemonDetails: {
+        flexDirection : "row",
+    },
+    Header : {
+        flexDirection : "row",
+        alignItems : "center",
+        justifyContent : "center"
+    },  
+    detailPokemonContainer : {
+        flex : 1,
+        backgroundColor : '#F5E8E7',
+        alignItems : "center",
+        justifyContent : 'center',
+    },
     TextSearchInput : {
         margin : 20,
         width : '60%',

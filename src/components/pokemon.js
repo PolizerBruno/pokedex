@@ -1,30 +1,11 @@
 import React from 'react'
-import {Image, Text, TouchableHighlight, View} from 'react-native'
+import { Image, Text, View} from 'react-native'
 import images from './images'
 import pokemon from './pokedex.json'
+import colors from './typeColors'
 export default props => {
   const state = {
-    type: '',
-  }
-  const typesColors = {
-    Normal: '#A8A77A',
-    Fire: '#EE8130',
-    Water: '#6390F0',
-    Electric: '#F7D02C',
-    Grass: '#7AC74C',
-    Ice: '#96D9D6',
-    Fighting: '#C22E28',
-    Poison: '#A33EA1',
-    Ground: '#E2BF65',
-    Flying: '#A98FF3',
-    Psychic: '#F95587',
-    Bug: '#A6B91A',
-    Rock: '#B6A136',
-    Ghost: '#735797',
-    Dragon: '#6F35FC',
-    Dark: '#705746',
-    Steel: '#B7B7CE',
-    Fairy: '#D685AD',
+    type: [],
   }
   const findPokemon = number => {
     pokemon.forEach(element => {
@@ -35,30 +16,75 @@ export default props => {
   }
 
   findPokemon(props.number)
+
+  const FormatNumberLength = (num, length) => {
+    let r = '' + num
+    while (r.length < length) {
+      r = '0' + r
+    }
+    return r
+  }
+
   return (
-    <View>
+    <View style = {{
+      marginBottom : 50,
+    }}>
       <Image
         style={{
           backgroundColor: 'rgb(255,255,255)',
           borderRadius: 100,
           borderWidth: 4,
-          borderColor: typesColors[state.type[0]],
+          borderColor: colors.typesColors[state.type[0]],
         }}
         source={images[props.number]}
       />
-      <Text
+      <View
         style={{
-          textTransform: 'capitalize',
-          borderWidth: 1,
-          marginTop: 10,
-          borderRadius: 10,
-          backgroundColor: 'rgba(0,0,0,1)',
-          textAlign: 'center',
-          flexWrap: 'wrap',
-          color : typesColors[state.type[0]],
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}>
-        {props.name}
-      </Text>
+        {state.type.map((type) => {
+          return (
+            <Text
+              key={type}
+              style={{
+                backgroundColor: colors.typesColors[type],
+                margin: 4,
+                padding: 4,
+                borderRadius: 5,
+              }}>
+              {type}
+            </Text>
+          )
+        })}
+      </View>
+      <View
+        style={{
+          marginTop: 4,
+          borderRadius: 10,
+          backgroundColor: 'rgba(255,255,255,0.8)',
+        }}>
+        <Text
+          style={{
+            textTransform: 'capitalize',
+            textAlign: 'center',
+            fontSize: 14,
+            color: '#5D5C5C',
+          }}>
+          N° : {FormatNumberLength(props.number, 3)}
+        </Text>
+        <Text
+          style={{
+            textTransform: 'capitalize',
+            textAlign: 'center',
+            fontSize: 16,
+            color: colors.typesColors[state.type[0]],
+          }}>
+          {props.name}
+        </Text>
+      </View>
+      
     </View>
   )
 }

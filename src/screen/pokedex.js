@@ -9,9 +9,9 @@ export default class pokedex extends Component {
     pokemons: '',
   };
 
-  query = async () =>
-    await axios
-      .get('https://pokeapi.co/api/v2/pokemon?limit=251')
+  query =  () =>
+    axios
+      .get('https://pokeapi.co/api/v2/pokemon?limit=1')
       .then((response) => {
         this.setState({pokemons: response.data.results});
       });

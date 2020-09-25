@@ -1,6 +1,20 @@
 import {StyleSheet, Dimensions} from 'react-native'
 
 export default StyleSheet.create({
+    Image:{
+        flex : 10,
+        alignItems : "center",
+        justifyContent : "center",
+        borderWidth : 10,
+    },
+    BackButton: {
+        margin : 10,
+        flex : 1,
+        flexDirection : "row",
+        alignItems : "center",
+        justifyContent : "center",
+
+    },
     Text : {
         fontSize : 16,
         textAlign : "center",

@@ -2,7 +2,7 @@ import React from 'react'
 import { Image, Text, View} from 'react-native'
 import images from './images'
 import pokemon from './pokedex.json'
-import colors from './typeColors'
+import colors from '../style/typeColors'
 export default props => {
   const state = {
     type: [],
@@ -34,7 +34,7 @@ export default props => {
           backgroundColor: 'rgb(255,255,255)',
           borderRadius: 100,
           borderWidth: 4,
-          borderColor: colors.typesColors[state.type[0]],
+          borderColor: colors.typesColors[String(state.type[0]).toUpperCase()],
         }}
         source={images[props.number]}
       />
@@ -49,7 +49,7 @@ export default props => {
             <Text
               key={type}
               style={{
-                backgroundColor: colors.typesColors[type],
+                backgroundColor: colors.typesColors[String(type).toUpperCase()],
                 margin: 4,
                 padding: 4,
                 borderRadius: 5,
@@ -79,7 +79,7 @@ export default props => {
             textTransform: 'capitalize',
             textAlign: 'center',
             fontSize: 16,
-            color: colors.typesColors[state.type[0]],
+            color: colors.typesColors[String(state.type[0]).toUpperCase()],
           }}>
           {props.name}
         </Text>

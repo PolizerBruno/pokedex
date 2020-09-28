@@ -11,7 +11,7 @@ export default class pokedex extends Component {
 
   query =  () =>
     axios
-      .get('https://pokeapi.co/api/v2/pokemon?limit=1')
+      .get('https://pokeapi.co/api/v2/pokemon?limit=151')
       .then((response) => {
         this.setState({pokemons: response.data.results});
       });

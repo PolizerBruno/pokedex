@@ -5,17 +5,6 @@ import images from './images'
 
 export default props => {
 
-    const state = {
-        types: [],
-    }
-
-    const getType = (types) => {
-        {
-            for (i in types) {
-                state.types.push(types[i].type.name)
-            }
-        }
-    }
     const FormatNumberLength = (num, length) => {
         let r = '' + num
         while (r.length < length) {
@@ -23,7 +12,6 @@ export default props => {
         }
         return r
     }
-    getType(props.types)
     return (
         <View style={{ flex: 1 }}>
             <View
@@ -38,17 +26,17 @@ export default props => {
                         textTransform: 'capitalize',
                         textAlign: 'center',
                         fontSize: 36,
-                        color: colors.typesColors[String(state.types[0]).toUpperCase()],
+                        color: colors.typesColors[String(props.types[0]).toUpperCase()],
                     }}>
                     {props.name}
                 </Text>
                 <Image style={{
                 }} source={images[props.number]} />
                 <View style={{ flexDirection: "row" }}>
-                    {state.types.map((type) => {
+                    {props.types.map((type) => {
                         return (
                             <Text
-                                key={type}
+                                key={Math.random()}
                                 style={{
                                     backgroundColor: colors.typesColors[String(type).toUpperCase()],
                                     margin: 4,
@@ -67,7 +55,6 @@ export default props => {
                 style={{
                     marginTop: 4,
                     borderRadius: 10,
-                    backgroundColor: 'rgba(255,255,255,0.8)',
                 }}>
                 <Text
                     style={{

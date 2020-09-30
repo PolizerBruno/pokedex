@@ -1,5 +1,4 @@
 import {createAppContainer,createSwitchNavigator} from 'react-navigation'
-
 import pokedex from '../screen/pokedex'
 import detailPokemon from '../screen/detailPokemon'
 
@@ -17,4 +16,4 @@ const mainRoutes = {
 const mainNavigator = createSwitchNavigator(mainRoutes,{
     initialRouteName : 'Pokedex'
 })
-export default createAppContainer(mainNavigator)
+export default  createAppContainer(mainNavigator)

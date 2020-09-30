@@ -9,24 +9,24 @@ export default props => {
         status: []
     }
     const getStates = states => {
-        state.status=[]
         for (s in states) {
             state.status.push([states[s].stat.name, states[s].base_stat])
         }
     }
     getStates(props.stats)
     return (
-        <View style={{alignItems : "center", }}>
-            <Text style={{alignItems : "center", fontSize: 30, textAlign: "center", }}>Stats</Text>
-            <View style={{alignItems : "center",justifyContent:"center", width: Dimensions.get('screen').width*0.6}}>
-                {state.status.map(stat => {
-                    return (
-                        <View key={Math.random()} style={{flex : 1,minWidth : '60%',width: `${stat[1]}%`, borderWidth: 2, margin: 10, marginRight: 20,alignItems:"center" }}>
-                            <Text style={{width : '100%', fontSize: 14, textTransform: 'capitalize',backgroundColor: colors.typesColors[String(stat[0]).split('-').join('').toUpperCase()], textAlign: "center",padding : 5 }}>{stat[0]} - {stat[1]}</Text>
+        <View style={{}}>
+            <Text style={{ alignItems: "center", fontSize: 30, textAlign: "center", }}>Stats</Text>
+            {state.status.map(stat => {
+                return (
+                    <View key={stat[0]} style={{ flex: 1, flexDirection: "row" ,padding: 10,alignItems :"center",}}>
+                        <Text style={{ width: 120, fontSize: 14, textAlign: "right", textTransform: 'capitalize',margin : 10}}>{stat[0]}</Text>
+                        <View style={{width : Dimensions.get("screen").width*0.35,justifyContent:"center"}}>
+                            <Text style={{minWidth : 30,maxHeight : 25, width: `${stat[1]}%`,maxWidth :'150%', fontSize: 12, textTransform: 'capitalize', backgroundColor: colors.typesColors[String(stat[0]).split('-').join('').toUpperCase()], textAlign: "center", padding: 5 }}>{stat[1]}</Text>
                         </View>
-                    )
-                })}
-            </View>
+                    </View>
+                )
+            })}
         </View>
     )
 }

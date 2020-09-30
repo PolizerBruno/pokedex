@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {FlatList, TextInput, TouchableOpacity, View} from 'react-native';
+import React, { Component } from 'react';
+import { FlatList, TextInput, TouchableOpacity, View } from 'react-native';
 import Style from '../style/sytle';
 import Pokemon from '../components/pokemon';
 import axios from 'axios';
@@ -7,25 +7,29 @@ import axios from 'axios';
 export default class pokedex extends Component {
   state = {
     pokemons: '',
+    searchInput: ''
   };
 
-  query =  () =>
-    axios
-      .get('https://pokeapi.co/api/v2/pokemon?limit=151')
+  query = async () =>
+    await axios
+      .get('https://pokeapi.co/api/v2/pokemon?limit=807')
       .then((response) => {
-        this.setState({pokemons: response.data.results});
+        this.setState({ pokemons: response.data.results.filter((x) => { return String(x.name).toUpperCase().includes(String(this.state.searchInput).toUpperCase()) }) });
       });
-  componentDidMount = () => {
-    this.query();
+  componentDidMount = async () => {
+    await this.query();
   };
 
   render() {
     return (
       <View style={Style.pokedexPokemonContainer}>
-        <TextInput placeholder={'Search'} style={Style.TextSearchInput} />
+        
+        <TextInput placeholder={'Search'} style={Style.TextSearchInput} onChangeText={searchInput => this.setState({ searchInput }, () => this.query())} />
         <FlatList
+          removeClippedSubviews={true}
           numColumns={3}
           data={this.state.pokemons}
+          key={this.state.pokemons.name}
           renderItem={(item) => (
             <TouchableOpacity
               onPress={() =>

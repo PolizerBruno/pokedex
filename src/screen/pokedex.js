@@ -44,11 +44,11 @@ export default class pokedex extends Component {
               this.setState({searchInput}, () => this.query())
             }
           />
-          <Text>Generation - {this.state.generation}</Text>
+          <Text style={{fontSize : 16,textAlign : "left"}}>Generation - {this.state.generation}</Text>
         </View>
         <View
           style={{
-            flex: 0.3,
+            flex: 0.22,
             flexDirection: 'row',
             flexWrap: 'wrap',
             justifyContent: 'space-evenly',

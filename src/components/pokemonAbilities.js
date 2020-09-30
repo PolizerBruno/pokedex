@@ -1,14 +1,13 @@
 import React from 'react'
-import {Text, View} from 'react-native'
-
+import {Text, TouchableOpacity, View} from 'react-native'
 export default props => {
   return (
     <View
       style={{
+        marginTop : 5,
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        margin: 10,
       }}>
       <Text style={{fontSize: 24}}>Abilities</Text>
       <View style={{flexDirection: 'row'}}>
@@ -16,21 +15,18 @@ export default props => {
           ? props.abilityDescription.map(ability => {
               return (
                 <View key={ability}>
+                  <TouchableOpacity onPress = {()=>props.navigation.navigate('AbilitiesDescription',{id: props.id,ability : ability[0],abilityName : ability[1]})}>
                   <Text
                     style={{
                       textTransform: 'capitalize',
                       fontSize: 20,
                       textAlign: 'center',
-                      margin: 10,
+                      marginRight: 10,
+                      color : props.color
                     }}>
-                    {ability[0]}
+                    {ability[1]}
                   </Text>
-                  <Text
-                    style={{
-                      fontSize: 18,
-                      textAlign: 'center',
-                      margin: 10,
-                    }}></Text>
+                  </TouchableOpacity>
                 </View>
               )
             })

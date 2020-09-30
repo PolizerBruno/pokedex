@@ -5,6 +5,9 @@ import Header from '../components/header'
 import PokemonStats from '../components/pokemonStats'
 import PokemonAbilities from '../components/pokemonAbilities'
 import EvolutionaryChain from '../components/evolutionaryChain'
+import PokemonDescription from '../components/pokemonDescription'
+import colors from '../style/typeColors'
+
 export default class detailPokemon extends Component {
   state = {
     id: this.props.navigation.state.params.id,
@@ -13,6 +16,7 @@ export default class detailPokemon extends Component {
     types: [],
     evolutionaryChain: [],
     species: [],
+    flavor_text: '',
   }
   getEvolutionaryChain = async () => {
     const species = await this.getDataFromApi(
@@ -30,10 +34,8 @@ export default class detailPokemon extends Component {
         this.state.data.abilities[i].ability.url,
       )
       array.push([
+        this.state.data.abilities[i].ability.url,
         this.state.data.abilities[i].ability.name,
-        result.data.effect_entries[0].language.name == 'en'
-          ? result.data.effect_entries[0].effect
-          : result.data.effect_entries[1].effect,
       ])
     }
     this.setState({
@@ -50,8 +52,16 @@ export default class detailPokemon extends Component {
       resolve(axios.get(req))
     })
   }
+  getDescriptionLanguage = description => {
+    for (i in description) {
+      if(description[i].language.name == "en"){
+        this.setState({flavor_text : String(description[i].flavor_text).replace(/@"\t|\n|\r"/gm,' ')})
+        return
+      }
+    }
+  }
 
-  componentDidMount = async() => {
+  componentDidMount = async () => {
     await this.getDataFromApi(
       `https://pokeapi.co/api/v2/pokemon/${this.state.id}/`,
     ).then(result => this.setState({data: result.data}))
@@ -59,6 +69,7 @@ export default class detailPokemon extends Component {
     await this.getAbilitiesDescription()
     await this.getType(this.state.data.types)
     await this.getEvolutionaryChain()
+    await this.getDescriptionLanguage(this.state.species.flavor_text_entries)
   }
   render () {
     return (
@@ -67,7 +78,6 @@ export default class detailPokemon extends Component {
           onPress={() => this.props.navigation.navigate('Pokedex')}>
           <View
             style={{
-              height: 50,
               borderBottomWidth: 2,
               justifyContent: 'center',
               alignContent: 'center',
@@ -90,7 +100,11 @@ export default class detailPokemon extends Component {
               number={this.state.id}
               types={this.state.types}
             />
+            <PokemonDescription description={this.state.flavor_text} />
             <PokemonAbilities
+              id = {this.state.id}
+              navigation={this.props.navigation}
+              color = {colors.typesColors[String(this.state.types[0]).toUpperCase()]}
               abilityDescription={this.state.abilityDescription}
             />
           </View>

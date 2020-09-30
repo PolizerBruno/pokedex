@@ -1,5 +1,5 @@
 import React from 'react'
-import {Dimensions, Image, Text, View} from 'react-native'
+import {Image, Text, View} from 'react-native'
 import colors from '../style/typeColors'
 import images from './imagesDetails'
 

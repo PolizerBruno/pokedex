@@ -1,6 +1,17 @@
 import {StyleSheet, Dimensions} from 'react-native'
 
 export default StyleSheet.create({
+  generationTouch : {
+    alignItems : "center",
+    justifyContent : "center"
+  },
+  generationButtons : {
+    padding : 10,
+    margin : 10,
+    borderRadius : 45,
+    backgroundColor : '#EC4643',
+    color : '#FFFFFF',
+  },
   DetailPokemonComponentDefault: {
     flex: 1,
     padding: 10,

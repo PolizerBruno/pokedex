@@ -11,14 +11,16 @@ export default class detailPokemon extends Component {
     data: '',
     abilityDescription: [],
     types: [],
-    evolutionaryChain : [],
-    species : []
+    evolutionaryChain: [],
+    species: [],
   }
-  getEvolutionaryChain = async () =>{
-    const species = await this.getDataFromApi(`https://pokeapi.co/api/v2/pokemon-species/${ this.state.id }/`)
-    this.setState({species : species.data})
+  getEvolutionaryChain = async () => {
+    const species = await this.getDataFromApi(
+      `https://pokeapi.co/api/v2/pokemon-species/${this.state.id}/`,
+    )
+    this.setState({species: species.data})
     const result = await this.getDataFromApi(species.data.evolution_chain.url)
-    this.setState({evolutionaryChain : result.data})
+    this.setState({evolutionaryChain: result.data})
   }
 
   getAbilitiesDescription = async () => {
@@ -49,7 +51,7 @@ export default class detailPokemon extends Component {
     })
   }
 
-  componentDidMount = async () => {
+  componentDidMount = async() => {
     await this.getDataFromApi(
       `https://pokeapi.co/api/v2/pokemon/${this.state.id}/`,
     ).then(result => this.setState({data: result.data}))
@@ -92,13 +94,14 @@ export default class detailPokemon extends Component {
               abilityDescription={this.state.abilityDescription}
             />
           </View>
-            <EvolutionaryChain navigation={this.props.navigation} evolutionaryChain={this.state.evolutionaryChain}/>
+          <EvolutionaryChain
+            navigation={this.props.navigation}
+            evolutionaryChain={this.state.evolutionaryChain}
+          />
           <View>
-            <PokemonStats stats={this.state.data.stats}/>
+            <PokemonStats stats={this.state.data.stats} />
           </View>
-          <View>
-          
-          </View>
+          <View></View>
         </ScrollView>
       </View>
     )

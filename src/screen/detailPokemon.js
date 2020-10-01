@@ -78,10 +78,10 @@ export default class detailPokemon extends Component {
           onPress={() => this.props.navigation.navigate('Pokedex')}>
           <View
             style={{
-              borderBottomWidth: 2,
               justifyContent: 'center',
               alignContent: 'center',
               alignItems: 'center',
+              
             }}>
             <Text
               style={{
@@ -94,7 +94,7 @@ export default class detailPokemon extends Component {
           </View>
         </TouchableOpacity>
         <ScrollView style={{flex: 9}}>
-          <View>
+          <View style ={{backgroundColor : '#201D1D',color : '#FFFFFF'}}>
             <Header
               name={this.state.data.name}
               number={this.state.id}

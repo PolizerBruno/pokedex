@@ -1,7 +1,7 @@
 import {createAppContainer,createSwitchNavigator} from 'react-navigation'
 import pokedex from '../screen/pokedex'
 import detailPokemon from '../screen/detailPokemon'
-import abilitiesDescription from '../components/abilitiesDescription'
+import abilitiesDescription from './abilitiesDescription'
 
 const mainRoutes = {
     Pokedex : {

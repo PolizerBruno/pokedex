@@ -9,7 +9,7 @@ export default props => {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      <Text style={{fontSize: 24}}>Abilities</Text>
+      <Text style={{fontSize: 24,color : '#FFFFFF'}}>Abilities</Text>
       <View style={{flexDirection: 'row'}}>
         {props.abilityDescription.length > 0
           ? props.abilityDescription.map(ability => {

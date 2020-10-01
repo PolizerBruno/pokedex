@@ -38,7 +38,7 @@ export default props => {
                 key={Math.random()}
                 style={{
                   backgroundColor:
-                    colors.typesColors[String(type).toUpperCase()],
+                  colors.typesColors[String(type).toUpperCase()],
                   margin: 4,
                   padding: 4,
                   borderRadius: 5,

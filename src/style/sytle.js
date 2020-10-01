@@ -64,9 +64,9 @@ export default StyleSheet.create({
   },
   pokedexPokemonContainer: {
     flex: 1,
-    backgroundColor: '#F5E8E7',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#C03838',
   },
   pokedexPokemon: {
     backgroundColor: 'rgba(255,255,255,0.7)',
@@ -81,9 +81,10 @@ export default StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'center',
+    padding : 10,
   },
   row3x4: {
-    padding: 20,
+    padding: 10,
     flexDirection: 'row',
     width: Dimensions.get('screen').width / 3,
     height: Dimensions.get('screen').height / 4,

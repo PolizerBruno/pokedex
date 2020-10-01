@@ -23,7 +23,7 @@ export default props => {
   setDetails()
   extract(state.details, 'species')
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center',backgroundColor : '#000000'}}>
       <Text
         style={{
           textAlign: 'center',
@@ -33,7 +33,7 @@ export default props => {
         Evolutionary Chain
       </Text>
       <View
-        style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly'}}>
+        style={{flex: 1, flexDirection: 'row', justifyContent: 'space-evenly',}}>
         {state.array.map(pokemon => {
           return (
             <TouchableOpacity
@@ -45,6 +45,7 @@ export default props => {
                 <Image source={images[pokemon[0]]} />
                 <Text
                   style={{
+                    color  : '#FFFFFF',
                     fontSize: 16,
                     textTransform: 'capitalize',
                     textAlign: 'center',

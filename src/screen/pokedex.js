@@ -1,5 +1,11 @@
 import React, {Component} from 'react'
-import {FlatList, Text, TextInput, TouchableOpacity, View} from 'react-native'
+import {
+  FlatList,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native'
 import Style from '../style/sytle'
 import Pokemon from '../components/pokemon'
 import axios from 'axios'
@@ -11,11 +17,15 @@ export default class pokedex extends Component {
     limit: 151,
     offset: 0,
     generation: 'I',
+    image: '',
+    color: '#FFFFFF',
   }
 
   query = async () =>
     await axios
-      .get(`https://pokeapi.co/api/v2/pokemon/?limit=${this.state.limit}&offset=${this.state.offset}`)
+      .get(
+        `https://pokeapi.co/api/v2/pokemon/?limit=${this.state.limit}&offset=${this.state.offset}`,
+      )
       .then(response => {
         this.setState({
           pokemons: response.data.results.filter(x => {
@@ -25,6 +35,7 @@ export default class pokedex extends Component {
           }),
         })
       })
+
   componentDidMount = async () => {
     await this.query()
   }
@@ -32,11 +43,12 @@ export default class pokedex extends Component {
   render () {
     return (
       <View style={Style.pokedexPokemonContainer}>
-        <View style={{
-          flexDirection : "row",
-          alignItems : "center",
-          justifyContent : "center",
-        }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
           <TextInput
             placeholder={'Search'}
             style={Style.TextSearchInput}
@@ -44,42 +56,84 @@ export default class pokedex extends Component {
               this.setState({searchInput}, () => this.query())
             }
           />
-          <Text style={{fontSize : 16,textAlign : "left"}}>Generation - {this.state.generation}</Text>
+          <Text style={{fontSize: 16, textAlign: 'left'}}>
+            Generation - {this.state.generation}
+          </Text>
         </View>
         <View
           style={{
-            flex: 0.22,
             flexDirection: 'row',
             flexWrap: 'wrap',
             justifyContent: 'space-evenly',
           }}>
-          <TouchableOpacity style={Style.generationTouch} onPress={()=>{this.setState({generation : "I",offset:0,limit : 151},()=>this.query())}}  >
+          <TouchableOpacity
+            style={Style.generationTouch}
+            onPress={() => {
+              this.setState({generation: 'I', offset: 0, limit: 151}, () =>
+                this.query(),
+              )
+            }}>
             <Text style={Style.generationButtons}>Gen I</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=>{this.setState({generation : "II",limit : 100,offset : 151},()=>this.query())}}>
-            <Text style={Style.generationButtons} >Gen II</Text>
+          <TouchableOpacity
+            onPress={() => {
+              this.setState({generation: 'II', limit: 100, offset: 151}, () =>
+                this.query(),
+              )
+            }}>
+            <Text style={Style.generationButtons}>Gen II</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=>{this.setState({generation : "III",limit : 135,offset : 251},()=>this.query())}}>
-            <Text style={Style.generationButtons}  >Gen III</Text>
+          <TouchableOpacity
+            onPress={() => {
+              this.setState({generation: 'III', limit: 135, offset: 251}, () =>
+                this.query(),
+              )
+            }}>
+            <Text style={Style.generationButtons}>Gen III</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=>{this.setState({generation : "IV",limit : 107,offset : 386},()=>this.query())}}>
-            <Text style={Style.generationButtons} >Gen IV</Text>
+          <TouchableOpacity
+            onPress={() => {
+              this.setState({generation: 'IV', limit: 107, offset: 386}, () =>
+                this.query(),
+              )
+            }}>
+            <Text style={Style.generationButtons}>Gen IV</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=>{this.setState({generation : "V",limit : 156,offset : 493},()=>this.query())}}>
-            <Text style={Style.generationButtons} >Gen V</Text>
+          <TouchableOpacity
+            onPress={() => {
+              this.setState({generation: 'V', limit: 156, offset: 493}, () =>
+                this.query(),
+              )
+            }}>
+            <Text style={Style.generationButtons}>Gen V</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=>{this.setState({generation : "VI",limit : 72,offset : 649},()=>this.query())}}>
+          <TouchableOpacity
+            onPress={() => {
+              this.setState({generation: 'VI', limit: 72, offset: 649}, () =>
+                this.query(),
+              )
+            }}>
             <Text style={Style.generationButtons}>Gen VI</Text>
           </TouchableOpacity>
-          <TouchableOpacity  onPress={()=>{this.setState({generation : "VII",limit : 88,offset : 721},()=>this.query())}}>
+          <TouchableOpacity
+            onPress={() => {
+              this.setState({generation: 'VII', limit: 88, offset: 721}, () =>
+                this.query(),
+              )
+            }}>
             <Text style={Style.generationButtons}>Gen VII</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=>{this.setState({generation : "All",limit : 809,offset : 0},()=>this.query())}}>
+          <TouchableOpacity
+            onPress={() => {
+              this.setState({generation: 'All', limit: 809, offset: 0}, () =>
+                this.query(),
+              )
+            }}>
             <Text style={Style.generationButtons}>All Generations</Text>
           </TouchableOpacity>
         </View>
         <FlatList
-          style={{flex: 1}}
+          style={{flex: 10,backgroundColor : '#F7E9E9',width :'98%',borderRadius : 10,marginBottom :10}}
           removeClippedSubviews={true}
           numColumns={3}
           data={this.state.pokemons}

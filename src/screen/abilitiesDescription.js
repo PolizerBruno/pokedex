@@ -79,75 +79,86 @@ export default class extends Component {
             style={{
               alignItems: 'center',
               justifyContent: 'center',
-              margin: 20,
             }}>
-            <Text
+            <View
               style={{
-                fontSize: 30,
-                textTransform: 'capitalize',
-                borderBottomWidth: 2,
-                width: '90%',
-                textAlign: 'center',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: 20,
               }}>
-              {this.props.navigation.state.params.abilityName}
+              <Text
+                style={{
+                  fontSize: 30,
+                  textTransform: 'capitalize',
+                  borderBottomWidth: 2,
+                  width: '90%',
+                  textAlign: 'center',
+                }}>
+                {this.props.navigation.state.params.abilityName}
+              </Text>
+            </View>
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: 20,
+              }}>
+              <Text style={{fontSize: 20}}>
+                {this.state.effect}
+              </Text>
+            </View>
+            <Text style={{textAlign: 'center', fontSize: 30}}>
+              Pokemons with this ability
             </Text>
-          </View>
-          <View
-            style={{
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: 20,
-            }}>
-            <Text style={{fontSize: 20}}>{this.state.effect}</Text>
-          </View>
-          <Text style={{textAlign : 'center',fontSize : 26}}>Pokemons with this ability</Text>
-          <View
-            style={{
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              justifyContent: 'space-evenly',
-            }}>
-            {this.state.pokemons.map(e => {
-              return (
-                <View
-                  key ={e}
-                  style={{
-                    margin: 2,
-                    width: Dimensions.get('screen').width / 3,
-                    height : Dimensions.get('screen').height / 16,
-                    borderWidth : 4,
-                    borderRadius : 10,
-                    alignItems : 'center',
-                    justifyContent : 'center',
-                    backgroundColor : colors.typesColors[e[2]['_W'].type],
-                    
-                  }}>
-                  <TouchableOpacity
+            <View
+              style={{
+                flexDirection: 'row',
+                flexWrap: 'wrap',
+                justifyContent: 'space-evenly',
+              }}>
+              {this.state.pokemons.map(e => {
+                return (
+                  <View
                     key={e}
-                    onPress={() => {
-                      this.props.navigation.navigate('DetailPokemon', {
-                        id: e[0],
-                      })
+                    style={{
+                      margin: 2,
+                      width: Dimensions.get('screen').width / 3,
+                      height: Dimensions.get('screen').height / 16,
+                      borderWidth: 4,
+                      borderRadius: 10,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: colors.typesColors['GRASS'],
                     }}>
-                    <View
-                      style={{flexDirection : 'row',alignItems : 'center',justifyContent : 'center',}}
-                    >
-                      <Image source={sprites[e[0]]} />
-                      <Text
+                    <TouchableOpacity
+                      key={e}
+                      onPress={() => {
+                        this.props.navigation.navigate('DetailPokemon', {
+                          id: e[0],
+                        })
+                      }}>
+                      <View
                         style={{
-                          fontSize : 14,
-                          color : '#FFFFFF',
-                          textTransform: 'capitalize',
-                          textAlign : 'left',
-                          width : '70%',
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          justifyContent: 'center',
                         }}>
-                        {e[1]}
-                      </Text>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-              )
-            })}
+                        <Image source={sprites[e[0]]} />
+                        <Text
+                          style={{
+                            fontSize: 14,
+                            textTransform: 'capitalize',
+                            textAlign: 'left',
+                            width: '70%',
+                          }}>
+                          {e[1]}
+                        </Text>
+                      </View>
+                    </TouchableOpacity>
+                  </View>
+                )
+              })}
+            </View>
           </View>
         </ScrollView>
       </View>

@@ -6,6 +6,7 @@ import PokemonStats from '../components/pokemonStats'
 import PokemonAbilities from '../components/pokemonAbilities'
 import EvolutionaryChain from '../components/evolutionaryChain'
 import PokemonDescription from '../components/pokemonDescription'
+import PokemonMoves from '../components/pokemonMoves'
 import colors from '../style/typeColors'
 
 export default class detailPokemon extends Component {
@@ -81,7 +82,7 @@ export default class detailPokemon extends Component {
               justifyContent: 'center',
               alignContent: 'center',
               alignItems: 'center',
-              
+              borderBottomWidth : 2,
             }}>
             <Text
               style={{
@@ -94,7 +95,7 @@ export default class detailPokemon extends Component {
           </View>
         </TouchableOpacity>
         <ScrollView style={{flex: 9}}>
-          <View style ={{backgroundColor : '#201D1D',color : '#FFFFFF'}}>
+          <View>
             <Header
               name={this.state.data.name}
               number={this.state.id}
@@ -114,6 +115,9 @@ export default class detailPokemon extends Component {
           />
           <View>
             <PokemonStats stats={this.state.data.stats} />
+          </View>
+          <View>
+            <PokemonMoves data={this.state.data.moves}/>
           </View>
           <View></View>
         </ScrollView>

@@ -9,8 +9,8 @@ export default props => {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-      <Text style={{fontSize: 24,color : '#FFFFFF'}}>Abilities</Text>
-      <View style={{flexDirection: 'row'}}>
+      <Text style={{fontSize: 30,borderBottomWidth : 2}}>Abilities</Text>
+      <View style={{flexDirection: 'row',flexWrap :'wrap',justifyContent :'space-evenly'}}>
         {props.abilityDescription.length > 0
           ? props.abilityDescription.map(ability => {
               return (
@@ -19,10 +19,11 @@ export default props => {
                   <Text
                     style={{
                       textTransform: 'capitalize',
-                      fontSize: 20,
+                      fontSize: 26,
                       textAlign: 'center',
                       marginRight: 10,
-                      color : props.color
+                      color : props.color,
+                      padding : 10,
                     }}>
                     {ability[1]}
                   </Text>

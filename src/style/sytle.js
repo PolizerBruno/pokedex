@@ -72,7 +72,6 @@ export default StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.7)',
     alignItems: 'center',
     width: Dimensions.get('screen').width / 3,
-    height: Dimensions.get('screen').height / 4,
     justifyContent: 'center',
   },
 
@@ -87,6 +86,5 @@ export default StyleSheet.create({
     padding: 10,
     flexDirection: 'row',
     width: Dimensions.get('screen').width / 3,
-    height: Dimensions.get('screen').height / 4,
   },
 })

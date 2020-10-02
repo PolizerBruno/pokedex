@@ -26,9 +26,7 @@ export default props => {
   }
 
   return (
-    <View style = {{
-      marginBottom : 50,
-    }}>
+    <View>
       <Image
         style={{
           backgroundColor: 'rgb(255,255,255)',

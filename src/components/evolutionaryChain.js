@@ -23,12 +23,13 @@ export default props => {
   setDetails()
   extract(state.details, 'species')
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center',backgroundColor : '#000000'}}>
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text
         style={{
           textAlign: 'center',
           textTransform: 'capitalize',
-          fontSize: 24,
+          fontSize: 30,
+          borderBottomWidth : 2,
         }}>
         Evolutionary Chain
       </Text>
@@ -45,7 +46,6 @@ export default props => {
                 <Image source={images[pokemon[0]]} />
                 <Text
                   style={{
-                    color  : '#FFFFFF',
                     fontSize: 16,
                     textTransform: 'capitalize',
                     textAlign: 'center',

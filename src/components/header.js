@@ -24,6 +24,9 @@ export default props => {
             textAlign: 'center',
             fontSize: 36,
             color: colors.typesColors[String(props.types[0]).toUpperCase()],
+            borderBottomColor : colors.typesColors[String(props.types[0]).toUpperCase()],
+            borderBottomWidth :2,
+            marginBottom : 20,
           }}>
           {props.name}
         </Text>
@@ -60,7 +63,6 @@ export default props => {
             textTransform: 'capitalize',
             textAlign: 'center',
             fontSize: 14,
-            color: '#5D5C5C',
           }}>
           N° : {FormatNumberLength(props.number, 3)}
         </Text>

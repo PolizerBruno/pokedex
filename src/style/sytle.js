@@ -61,6 +61,8 @@ export default StyleSheet.create({
     borderRadius: 40,
     textAlign: 'center',
     fontSize: 18,
+    borderColor:'#1ad1ff',
+    borderWidth:4,
   },
   pokedexPokemonContainer: {
     flex: 1,
@@ -85,6 +87,7 @@ export default StyleSheet.create({
   row3x4: {
     padding: 10,
     flexDirection: 'row',
-    width: Dimensions.get('screen').width / 3,
+    minWidth: Dimensions.get('screen').width / 3,
+    maxWidth : Dimensions.get('screen').width/6,
   },
 })

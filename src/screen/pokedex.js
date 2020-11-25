@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {
+  Dimensions,
   FlatList,
   Text,
   TextInput,
@@ -56,9 +57,11 @@ export default class pokedex extends Component {
               this.setState({searchInput}, () => this.query())
             }
           />
-          <Text style={{fontSize: 16, textAlign: 'left'}}>
-            Generation - {this.state.generation}
+          <View style={{width:50,height:50,backgroundColor:'white',borderColor:'#1ad1ff',borderRadius:25,borderWidth:4,justifyContent:'center',alignItems:'center'}}>
+          <Text style={{fontSize:30}}>
+             {this.state.generation}
           </Text>
+          </View>
         </View>
         <View
           style={{
@@ -73,7 +76,7 @@ export default class pokedex extends Component {
                 this.query(),
               )
             }}>
-            <Text style={Style.generationButtons}>Gen I</Text>
+            <Text style={Style.generationButtons}>I</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -81,7 +84,7 @@ export default class pokedex extends Component {
                 this.query(),
               )
             }}>
-            <Text style={Style.generationButtons}>Gen II</Text>
+            <Text style={Style.generationButtons}>II</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -89,7 +92,7 @@ export default class pokedex extends Component {
                 this.query(),
               )
             }}>
-            <Text style={Style.generationButtons}>Gen III</Text>
+            <Text style={Style.generationButtons}>III</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -97,7 +100,7 @@ export default class pokedex extends Component {
                 this.query(),
               )
             }}>
-            <Text style={Style.generationButtons}>Gen IV</Text>
+            <Text style={Style.generationButtons}>IV</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -105,7 +108,7 @@ export default class pokedex extends Component {
                 this.query(),
               )
             }}>
-            <Text style={Style.generationButtons}>Gen V</Text>
+            <Text style={Style.generationButtons}>V</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -113,7 +116,7 @@ export default class pokedex extends Component {
                 this.query(),
               )
             }}>
-            <Text style={Style.generationButtons}>Gen VI</Text>
+            <Text style={Style.generationButtons}>VI</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -121,7 +124,7 @@ export default class pokedex extends Component {
                 this.query(),
               )
             }}>
-            <Text style={Style.generationButtons}>Gen VII</Text>
+            <Text style={Style.generationButtons}>VII</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -129,14 +132,14 @@ export default class pokedex extends Component {
                 this.query(),
               )
             }}>
-            <Text style={Style.generationButtons}>All Generations</Text>
+            <Text style={Style.generationButtons}>All</Text>
           </TouchableOpacity>
         </View>
         <FlatList
-          style={{flex: 10,backgroundColor : '#F7E9E9',width :'98%',borderRadius : 10,marginBottom :10}}
+          style={{flex: 10,backgroundColor : '#F7E9E9',width :'98%',borderRadius : 10,marginBottom :10,margin:10,}}
           removeClippedSubviews={true}
-          numColumns={3}
           data={this.state.pokemons}
+          numColumns={3}
           key={this.state.pokemons.name}
           renderItem={item => (
             <TouchableOpacity
